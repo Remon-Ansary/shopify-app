@@ -1,40 +1,74 @@
-# Welcome to Remix!
+# Shopify Collections App
 
-- 📖 [Remix docs](https://remix.run/docs)
+This project is a Shopify app that allows merchants to organize their products into custom collections
 
-## Development
+## Features
 
-Run the dev server:
+- **View Collections**: Display all collections with their names, priority levels, and associated products.
+- **Create Collections**: Add new collections by specifying a unique name, optional priority level, and selecting products.
+- **Edit Collections**: Update existing collections, including changing the name, priority level, and associated products.
+- **Shopify API Integration**: Fetch product data in real time using Shopify's Admin GraphQL API.
 
-```shellscript
+## Built With
+
+- Remix.js
+- Shopify Polaris
+- Prisma
+- MySQL
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository_url>
+cd shopify-app
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root and add your environment variables:
+
+```env
+DATABASE_URL="mysql://root:YourNewPassword@localhost:3306/shopify_app"
+SHOPIFY_DOMAIN="your-store-name.myshopify.com"
+ADMIN_API_ACCESS_TOKEN="your-access-token"
+```
+
+### 4. Set Up the Database
+
+Create a Database in MySQL (if not already created):
+
+```sql
+CREATE DATABASE shopify_app;
+```
+
+Run Prisma Migrations:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+### 5. Running the Project
+
+Start the Remix development server:
+
+```bash
 npm run dev
 ```
 
-## Deployment
+Open your browser and navigate to http://localhost:3000 (or http://localhost:5173, depending on your setup) to see the app in action.
 
-First, build your app for production:
+## Routes Overview
 
-```sh
-npm run build
-```
+- `/collections`: Displays all collections.
+- `/collections/new`: Form to create a new collection.
+- `/collections/:collectionId`: Edit an existing collection.
 
-Then run the app in production mode:
 
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
