@@ -1,0 +1,27 @@
+datasource db {
+  provider = "mysql"
+  url="mysql://root:remon@localhost:3306/shopify_app"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Collection {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  priority  String?   // e.g., "High", "Medium", "Low"
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id           Int       @id @default(autoincrement())
+  shopifyId    String    // Shopify product ID
+  title        String
+  collectionId Int
+  collection   Collection @relation(fields: [collectionId], references: [id])
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
