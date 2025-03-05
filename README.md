@@ -2,12 +2,6 @@
 
 This project is a Shopify app that allows merchants to organize their products into custom collections
 
-## Features
-
-- **View Collections**: Display all collections with their names, priority levels, and associated products.
-- **Create Collections**: Add new collections by specifying a unique name, optional priority level, and selecting products.
-- **Edit Collections**: Update existing collections, including changing the name, priority level, and associated products.
-- **Shopify API Integration**: Fetch product data in real time using Shopify's Admin GraphQL API.
 
 ## Built With
 
